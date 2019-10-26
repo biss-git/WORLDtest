@@ -1,7 +1,7 @@
 # WORLDtest
 
 ## Overview
-WORLD.NETのテストコードです。  
+WORLD.NETのサンプルです。  
 
 ## Description
 
