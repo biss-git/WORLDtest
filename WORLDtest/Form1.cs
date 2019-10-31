@@ -20,7 +20,6 @@ namespace WORLDtest
         public Form1()
         {
             InitializeComponent();
-            WorldConfig.init();
         }
 
         /// <summary>
@@ -41,6 +40,7 @@ namespace WORLDtest
                 {
                     chart1.Series[0].Points.Add(f);
                 }
+                numericUpDown1.Maximum = wp.f0_length - 1;
             }
         }
 
@@ -49,11 +49,9 @@ namespace WORLDtest
         /// </summary>
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if(wp == null || // 音声が読み込まれていない
-                numericUpDown1.Value > wp.f0_length) // 値が範囲外
+            if (wp == null) // 音声がない
             {
-                // 何もしない
-                return;
+                return; // 何もしない
             }
             // スペクトル包絡を表示
             chart2.Series[0].Points.Clear();
@@ -66,28 +64,68 @@ namespace WORLDtest
         }
 
         /// <summary>
+        /// 「キー＋１」ボタンが押されたときの処理
+        /// </summary>
+        private void button_keyUp_Click(object sender, EventArgs e)
+        {
+            if (wp == null) // 音声がない
+            {
+                return; // 何もしない
+            }
+            // ピッチを上げる
+            for (int i = 0; i < wp.f0_length; i++)
+            {
+                wp.f0[i] *= (float)Math.Pow(2, 1.0 / 12);
+            }
+            // ピッチをグラフに表示
+            chart1.Series[0].Points.Clear();
+            foreach (var f in wp.f0)
+            {
+                chart1.Series[0].Points.Add(f);
+            }
+        }
+
+        /// <summary>
+        /// 「キーー１」ボタンが押されたときの処理
+        /// </summary>
+        private void button_keyDown_Click(object sender, EventArgs e)
+        {
+            if (wp == null) // 音声がない
+            {
+                return; // 何もしない
+            }
+            // ピッチを下げる
+            for (int i = 0; i < wp.f0_length; i++)
+            {
+                wp.f0[i] /= (float)Math.Pow(2, 1.0 / 12);
+            }
+            // ピッチをグラフに表示
+            chart1.Series[0].Points.Clear();
+            foreach (var f in wp.f0)
+            {
+                chart1.Series[0].Points.Add(f);
+            }
+        }
+
+        /// <summary>
         /// 音声の保存ボタンが押されたときの処理
         /// </summary>
         private void button_save_Click(object sender, EventArgs e)
         {
-            if(wp == null) // 音声がない
+            if (wp == null) // 音声がない
             {
-                // 何もしない
-                return;
+                return; // 何もしない
             }
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "音声(.wav)|*.wav";
             if(sfd.ShowDialog() == DialogResult.OK)
             {
-                // ピッチを半分にする
-                for(int i = 0; i < wp.f0_length; i++)
-                {
-                    wp.f0[i] /= 2;
-                }
                 // 保存する
                 Synthesizer synthesizer = new Synthesizer(wp);
                 synthesizer.SaveWav(sfd.FileName);
             }
         }
+
+
     }
 }

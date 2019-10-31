@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button_input = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button_save = new System.Windows.Forms.Button();
+            this.button_keyUp = new System.Windows.Forms.Button();
+            this.button_keyDown = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
@@ -58,20 +60,20 @@
             // 
             // chart1
             // 
-            chartArea1.AxisY.IsLogarithmic = true;
-            chartArea1.AxisY.Maximum = 1000D;
-            chartArea1.AxisY.Minimum = 100D;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.AxisY.IsLogarithmic = true;
+            chartArea3.AxisY.Maximum = 1000D;
+            chartArea3.AxisY.Minimum = 100D;
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(12, 92);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "ピッチ[Hz]";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "ピッチ[Hz]";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(776, 346);
             this.chart1.SuppressExceptions = true;
             this.chart1.TabIndex = 1;
@@ -103,18 +105,18 @@
             // 
             // chart2
             // 
-            chartArea2.AxisY.IsLogarithmic = true;
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea4.AxisY.IsLogarithmic = true;
+            chartArea4.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart2.Legends.Add(legend4);
             this.chart2.Location = new System.Drawing.Point(12, 455);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Legend = "Legend1";
-            series2.Name = "スペクトル包絡";
-            this.chart2.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series4.Legend = "Legend1";
+            series4.Name = "スペクトル包絡";
+            this.chart2.Series.Add(series4);
             this.chart2.Size = new System.Drawing.Size(776, 346);
             this.chart2.SuppressExceptions = true;
             this.chart2.TabIndex = 4;
@@ -125,17 +127,41 @@
             this.button_save.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button_save.Location = new System.Drawing.Point(609, 9);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(179, 67);
+            this.button_save.Size = new System.Drawing.Size(179, 77);
             this.button_save.TabIndex = 5;
             this.button_save.Text = "音声の保存";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            // 
+            // button_keyUp
+            // 
+            this.button_keyUp.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button_keyUp.Location = new System.Drawing.Point(438, 8);
+            this.button_keyUp.Name = "button_keyUp";
+            this.button_keyUp.Size = new System.Drawing.Size(138, 41);
+            this.button_keyUp.TabIndex = 6;
+            this.button_keyUp.Text = "キー ＋１";
+            this.button_keyUp.UseVisualStyleBackColor = true;
+            this.button_keyUp.Click += new System.EventHandler(this.button_keyUp_Click);
+            // 
+            // button_keyDown
+            // 
+            this.button_keyDown.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button_keyDown.Location = new System.Drawing.Point(438, 45);
+            this.button_keyDown.Name = "button_keyDown";
+            this.button_keyDown.Size = new System.Drawing.Size(138, 41);
+            this.button_keyDown.TabIndex = 7;
+            this.button_keyDown.Text = "キー ー１";
+            this.button_keyDown.UseVisualStyleBackColor = true;
+            this.button_keyDown.Click += new System.EventHandler(this.button_keyDown_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 903);
+            this.Controls.Add(this.button_keyDown);
+            this.Controls.Add(this.button_keyUp);
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.label1);
@@ -160,6 +186,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.Button button_keyUp;
+        private System.Windows.Forms.Button button_keyDown;
     }
 }
 
