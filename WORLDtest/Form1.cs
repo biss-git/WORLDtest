@@ -29,7 +29,7 @@ namespace WORLDtest
         {
             // 音声ファイル選択用のダイアログを表示
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "音声(.wav)|*.wav";
+            ofd.Filter = "音声(.wav,.mp3)|*.wav;*.mp3";
             if(ofd.ShowDialog() == DialogResult.OK)
             {
                 // 音声分析
