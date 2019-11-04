@@ -2,6 +2,7 @@
 
 ## Overview
 WORLD.NETのサンプルです。  
+ファイルから入力した音声のピッチを変更してファイルに保存します。
 
 ## Description
 
